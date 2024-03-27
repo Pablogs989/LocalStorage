@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LocalStorage</title>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Contacto</h1>
+    <form action="#" method="POST">
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" />
+      </div>
+      <div>
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" />
+      </div>
+      <div>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+      </div>
+      <div>
+        <button id="btn" type="submit">Enviar</button>
+      </div>
+    </form>
+    <div><p></p></div>
+    <script src="main.js"></script>
+  </body>
 </html>
