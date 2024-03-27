@@ -1,34 +1,57 @@
 
 const btn = document.getElementById('btn')
+const btnRemove = document.getElementById('btnRemove')
 const p = document.querySelector("p")
+let datosArray = [];
 
 function leerDatos() {
     const datos = JSON.parse(localStorage.getItem('datos'));
+    console.log(datos);
     return datos;
+}
+
+function escribirDatos() {
+    let datos = {
+        nombre: document.getElementById("nombre").value,
+        correo: document.getElementById("correo").value,
+        mensaje: document.getElementById("mensaje").value,
+    }
+    console.log(datos);
+    datosArray.push(datos);
+    localStorage.setItem("datos", JSON.stringify(datosArray));
 }
 
 function printDatos() {
     const datos = leerDatos();
     let texto = "";
-    for (const key in datos) {
-        texto = texto + (key + ": " + datos[key] + "\n");
-        console.log(texto);
+    let i = 0;
+    if (datos != null) {
+        datos.forEach(dato => {
+            for (const key in dato) {
+                console.log("datos");
+                texto = texto + (key + ": " + dato[key] + "\n");
+                console.log(texto);
+            }
+            texto = texto + "\n";
+            i++;
+        }); 
     }
+    
     p.innerText = texto;
+}
+
+function remove(e) {
+    e.preventDefault();
+    localStorage.removeItem('datos');
+    printDatos();
 }
 
 function onSubmit(e) {
     e.preventDefault();
-    console.log('hola');
-    let datos = {
-        nombre: document.getElementById("nombre").value,
-        correo: document.getElementById("correo").value,
-        mensaje: document.getElementById("mensaje").value,
-    }    
-    console.log(datos);
-    localStorage.setItem('datos', JSON.stringify(datos));
+    escribirDatos();
     printDatos();
-}    
+}
 
+printDatos();
 btn.addEventListener('click', onSubmit);
-
+btnRemove.addEventListener('click', remove);
