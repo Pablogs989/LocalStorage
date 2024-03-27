@@ -17,6 +17,15 @@ function escribirDatos() {
         mensaje: document.getElementById("mensaje").value,
     }
     console.log(datos);
+    if (datos.nombre == "") {
+        return alert("Escribe un nombre")
+    }
+    if (datos.correo == "") {
+        return alert("Escribe un correo")
+    }
+    if (datos.mensaje == "") {
+        return alert("Escribe un mensaje")
+    }
     datosArray.push(datos);
     localStorage.setItem("datos", JSON.stringify(datosArray));
 }
@@ -43,6 +52,7 @@ function printDatos() {
 function remove(e) {
     e.preventDefault();
     localStorage.removeItem('datos');
+    datosArray = [];
     printDatos();
 }
 
