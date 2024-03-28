@@ -17,13 +17,13 @@ function escribirDatos() {
         mensaje: document.getElementById("mensaje").value,
     }
     console.log(datos);
-    if (datos.nombre == "") {
+    if (datos.nombre === "" || datos.nombre === null) {
         return alert("Escribe un nombre")
     }
-    if (datos.correo == "") {
+    if (datos.correo === "" || datos.correo === null) {
         return alert("Escribe un correo")
     }
-    if (datos.mensaje == "") {
+    if (datos.mensaje === "" || datos.mensaje === null) {
         return alert("Escribe un mensaje")
     }
     datosArray.push(datos);
@@ -37,7 +37,6 @@ function printDatos() {
     if (datos != null) {
         datos.forEach(dato => {
             for (const key in dato) {
-                console.log("datos");
                 texto = texto + (key + ": " + dato[key] + "\n");
                 console.log(texto);
             }
